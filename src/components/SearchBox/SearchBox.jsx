@@ -8,11 +8,11 @@ const SearchBox = ({ find, onFind }) => {
     <div className={style.container}>
       <label htmlFor="findID">Find contacts by name</label>
       <input
-        id="findID"
+        id={findID}
         type="text"
         value={find}
         onChange={(e) => {
-          onFind(e.target.elements);
+          onFind(e.target.value);
         }}
       />
     </div>

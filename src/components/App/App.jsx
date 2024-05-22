@@ -16,12 +16,17 @@ function App() {
 
   const [find, setFind] = useState("");
 
+  const visibleFilter = contacts.filter((contact) =>
+    contact.name.toLocaleLowerCase().includes(find.toLocaleLowerCase())
+  );
+
+  const addContact = () => {};
   return (
     <div className={style.container}>
       <h1>Phonebook</h1>
-      <ContactForm />
+      <ContactForm onAdd={setContacts} />
       <SearchBox find={find} onFind={setFind} />
-      <ContactList contact={contacts} />
+      <ContactList contact={visibleFilter} />
     </div>
   );
 }
