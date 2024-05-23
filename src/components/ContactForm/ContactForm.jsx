@@ -44,14 +44,18 @@ const ContactForm = ({ onAdd }) => {
             Name
           </label>
           <Field id={nameId} name="name" className={styles.formControl} />
-          <ErrorMessage name="name" component="span" />
+          <ErrorMessage className={styles.error} name="name" component="span" />
         </div>
         <div className={styles.formGroup}>
           <label htmlFor={numberId} className={styles.formLabel}>
             Number
           </label>
           <Field id={numberId} name="number" className={styles.formControl} />
-          <ErrorMessage name="number" component="span" />
+          <ErrorMessage
+            className={styles.error}
+            name="number"
+            component="span"
+          />
         </div>
         <button type="submit" className={styles.submitButton}>
           Add contact

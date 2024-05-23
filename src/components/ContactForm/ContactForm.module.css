@@ -45,3 +45,7 @@
   background-size: 20px;
   padding-right: 35px;
 }
+
+.error {
+  color: red;
+}
