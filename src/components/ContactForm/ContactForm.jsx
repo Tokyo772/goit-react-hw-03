@@ -1,6 +1,7 @@
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { nanoid } from "nanoid";
+import style from "./ContactForm.module.css";
 
 import { useId } from "react";
 
@@ -39,9 +40,9 @@ const ContactForm = ({ onAdd }) => {
     >
       <Form>
         <label htmlFor={nameId}>Name</label>
-        <Field id={nameId} type="text" name="name" />
+        <Field id={nameId} name="name" />
         <label htmlFor={numberId}>Number</label>
-        <Field id={numberId} type="number" name="number" />
+        <Field id={numberId} name="number" />
         <button type="submit">Add contact</button>
       </Form>
     </Formik>
