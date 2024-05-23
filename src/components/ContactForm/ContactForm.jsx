@@ -5,7 +5,7 @@ import { nanoid } from "nanoid";
 import { useId } from "react";
 
 const FeedbackSchema = Yup.object().shape({
-  username: Yup.string()
+  name: Yup.string()
     .min(3, "Too short!")
     .max(50, "Too Long!")
     .required("Required"),
@@ -16,7 +16,7 @@ const FeedbackSchema = Yup.object().shape({
 });
 
 const initialValues = {
-  username: "",
+  name: "",
   number: "",
 };
 
@@ -25,7 +25,9 @@ const ContactForm = ({ onAdd }) => {
   const numberId = useId();
 
   const handleSubmit = (values, actions) => {
-    onAdd(values);
+    const newContact = { ...values, id: nanoid() };
+    onAdd(newContact);
+
     actions.resetForm();
   };
 
@@ -37,10 +39,10 @@ const ContactForm = ({ onAdd }) => {
     >
       <Form>
         <label htmlFor={nameId}>Name</label>
-        <Field id={nameId} type="text" name="username" />
+        <Field id={nameId} type="text" name="name" />
         <label htmlFor={numberId}>Number</label>
         <Field id={numberId} type="number" name="number" />
-        <button type="submit">Submit</button>
+        <button type="submit">Add contact</button>
       </Form>
     </Formik>
   );

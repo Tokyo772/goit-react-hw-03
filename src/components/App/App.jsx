@@ -17,16 +17,27 @@ function App() {
   const [find, setFind] = useState("");
 
   const visibleFilter = contacts.filter((contact) =>
-    contact.name.toLocaleLowerCase().includes(find.toLocaleLowerCase())
+    contact.name.toLowerCase().includes(find.toLowerCase())
   );
 
-  const addContact = () => {};
+  const addContact = (newTask) => {
+    setContacts((prevTask) => {
+      return [...prevTask, newTask];
+    });
+  };
+
+  const deleteContact = (idTask) => {
+    console.log(idTask);
+    setContacts((prevTask) => {
+      return prevTask.filter((item) => item.id !== idTask);
+    });
+  };
   return (
     <div className={style.container}>
       <h1>Phonebook</h1>
-      <ContactForm onAdd={setContacts} />
+      <ContactForm onAdd={addContact} />
       <SearchBox find={find} onFind={setFind} />
-      <ContactList contact={visibleFilter} />
+      <ContactList contact={visibleFilter} onDelete={deleteContact} />
     </div>
   );
 }
