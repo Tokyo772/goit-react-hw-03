@@ -43,7 +43,7 @@ function App() {
 
   useEffect(() => {
     window.localStorage.setItem("user-contacts", JSON.stringify(contacts));
-  });
+  }, [contacts]);
   return (
     <div className={style.container}>
       <h1 className={style.title}>Phonebook</h1>

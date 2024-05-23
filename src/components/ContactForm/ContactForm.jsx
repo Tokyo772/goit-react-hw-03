@@ -1,7 +1,7 @@
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { nanoid } from "nanoid";
-import style from "./ContactForm.module.css";
+import styles from "./ContactForm.module.css";
 
 import { useId } from "react";
 
@@ -38,12 +38,24 @@ const ContactForm = ({ onAdd }) => {
       onSubmit={handleSubmit}
       validationSchema={FeedbackSchema}
     >
-      <Form>
-        <label htmlFor={nameId}>Name</label>
-        <Field id={nameId} name="name" />
-        <label htmlFor={numberId}>Number</label>
-        <Field id={numberId} name="number" />
-        <button type="submit">Add contact</button>
+      <Form className={styles.contactForm}>
+        <div className={styles.formGroup}>
+          <label htmlFor={nameId} className={styles.formLabel}>
+            Name
+          </label>
+          <Field id={nameId} name="name" className={styles.formControl} />
+          <ErrorMessage name="name" component="span" />
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor={numberId} className={styles.formLabel}>
+            Number
+          </label>
+          <Field id={numberId} name="number" className={styles.formControl} />
+          <ErrorMessage name="number" component="span" />
+        </div>
+        <button type="submit" className={styles.submitButton}>
+          Add contact
+        </button>
       </Form>
     </Formik>
   );
